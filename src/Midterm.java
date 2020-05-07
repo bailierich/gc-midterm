@@ -7,5 +7,6 @@ public class Midterm {
 		System.out.println("David and his ninja students were the only hope for Shangrilla.");
 		System.out.println("David wasn't prepared for the sheer force of Shiera powers, Shangrilla was destroyed.");
 		System.out.println("David rose from the ashes in a daze, he called out to his ninja students, but heard no response.");
+		System.out.println("Those traitorous monkeys had switched sides and were now fighting against him with Shiera!");
 	}
 }
