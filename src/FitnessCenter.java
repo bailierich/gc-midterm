@@ -1,8 +1,7 @@
 
-public class Midterm {
+public class FitnessCenter {
 
 	public static void main(String[] args) {
-
 		
 	}
 }
