@@ -6,6 +6,7 @@ public class Midterm {
 		System.out.println("On a cold dark day, the evil Shiera attacked Shangrilla. ");
 		System.out.println("Kai-Yun and his ninja monkeys were the only hope for Shangrilla.");
 		System.out.println("Kai-Yun wasn't prepared for the sheer force of Shiera powers, Shangrilla was destroyed.");
+		System.out.println("Kai-Yun rose from the ashes in a daze, he called out to his ninja monkeys, but heard no response.");
 	}
 
 }
