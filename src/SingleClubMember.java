@@ -1,10 +1,10 @@
 
 public class SingleClubMember extends Member{
-	private String clubName;
+	private Club clubName;
 	private String birthday;
 	
 
-	public SingleClubMember(String name, int id, String clubName) {
+	public SingleClubMember(String name, int id, Club clubName) {
 		 super(name,id);
 		this.clubName = clubName;
 	}
@@ -13,7 +13,7 @@ public class SingleClubMember extends Member{
 
 	@Override
 	public void checkIn(Club club) {
-		if (Club.getName() != clubName) {
+		if (Club.getName() != clubName.getName()) {
 			//TODO make exception
 		}
 		
@@ -22,12 +22,12 @@ public class SingleClubMember extends Member{
 
 
 	public String getClubName() {
-		return clubName;
+		return clubName.getName();
 	}
 
 
 
-	public void setClubName(String clubName) {
+	public void setClubName(Club clubName) {
 		this.clubName = clubName;
 	}
 	
