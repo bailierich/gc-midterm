@@ -1,7 +1,7 @@
 
 public abstract class Member {
-	private String name;
-	private int id;
+	protected String name;
+	protected int id;
 	
 	public abstract void checkIn(Club club);
 	
