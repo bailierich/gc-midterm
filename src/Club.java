@@ -1,7 +1,7 @@
 
 public class Club {
-	private static String name;
-	private static String address;
+	private String name;
+	private String address;
 	
 	public Club() {
 		
@@ -11,13 +11,13 @@ public class Club {
 		this.name = name;
 		this.address = address;
 	}
-	public static String getName() {
+	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public static String getAddress() {
+	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {

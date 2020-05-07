@@ -29,6 +29,7 @@ static {
 	
 }
 	public static void main(String[] args) {
+		printMenu();
 		
 	}
 	private static void whichMembership() {
@@ -46,6 +47,14 @@ static {
 	private static void printMenu() {
 		for (int i = 0; i < initialMenu.size(); i++) {
 			System.out.println((i + 1) + " " + initialMenu.get(i));
+		}
+		
+		int choice = ValidatorHelper.getInt(scnr, "What would you like to do?", 1, 3);
+		if (choice == 1) {
+			whichMembership();
+			printMenu();
+		}else if (choice == 2) {
+			//memberCheckIn();
 		}
 	}
 	
@@ -69,6 +78,17 @@ static {
 	
 	private static Member makeNewMultiMember() {
 		return null;
+		
+	}
+	private static void memberCheckIn() {
+		String input = Validator.getString(scnr, "Which member is checking in (name)?");
+		String input2 = Validator.getString(scnr, "Which club does the user belong to?");
+//		for (Member m: memberList) {
+//			String memType = m.getMemberType();
+//			if (memType.equalsIgnoreCase("single")) {
+//				
+//			}
+//		}
 		
 	}
 }

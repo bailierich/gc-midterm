@@ -2,11 +2,13 @@
 public class MultiClubMember extends Member {
 	
 	private int membershipPoints = 0;
+	private String memberType;
 	
 	
-	public MultiClubMember(int membershipPoints, String name, int id) {
-		super(name,id);
+	public MultiClubMember(String memberType, String name, int id, int membershipPoints) {
+		super(memberType,name,id);
 		this.membershipPoints = membershipPoints;
+
 	}
 
 
@@ -24,5 +26,7 @@ public class MultiClubMember extends Member {
 	public void setMembershipPoints(int membershipPoints) {
 		this.membershipPoints = membershipPoints;
 	}
-
 }
+
+
+	

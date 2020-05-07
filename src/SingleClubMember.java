@@ -3,9 +3,19 @@ public class SingleClubMember extends Member{
 	private Club clubName;
 	private String birthday;
 	
+	
 
-	public SingleClubMember(String name, int id, Club clubName) {
-		 super(name,id);
+
+
+
+
+	public SingleClubMember() {
+		
+	}
+	
+
+	public SingleClubMember(String memberType, String name, int id, Club clubName) {
+		 super(memberType,name,id);
 		this.clubName = clubName;
 	}
 
@@ -13,7 +23,7 @@ public class SingleClubMember extends Member{
 
 	@Override
 	public void checkIn(Club club) {
-		if (Club.getName() != clubName.getName()) {
+		if (club.getName() != clubName.getName()) {
 			//TODO make exception
 		}
 		

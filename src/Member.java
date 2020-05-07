@@ -2,17 +2,18 @@
 public abstract class Member {
 	protected String name;
 	protected int id;
-	
+	private String memberType;
 	public abstract void checkIn(Club club);
 	
 	public Member() {
 		
 	}
 	
-	public Member(String name, int id) {
+	public Member(String memberType,String name, int id) {
 		super();
 		this.name = name;
 		this.id = id;
+		this.memberType = memberType;
 	}
 	
 	public String getName() {
@@ -31,6 +32,14 @@ public abstract class Member {
 		this.id = id;
 	}
 	
+	public String getMemberType() {
+		return memberType;
+	}
+
+	public void setMemberType(String memberType) {
+		this.memberType = memberType;
+	}
+
 	@Override
 	public String toString() {
 		return "Members [name=" + name + ", id=" + id + "]";
