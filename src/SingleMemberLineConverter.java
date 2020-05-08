@@ -14,12 +14,14 @@ public class SingleMemberLineConverter implements LineConverter<Member> {
 	public String toLine(Member object) {
 		if (object.getMemberType().equalsIgnoreCase("single")) {
 		return	object.getMemberType()+ "~~~" + object.getName()+
-				"~~~"+object.getId()+"~~~" +((SingleClubMember) object).getClubName();}
+				"~~~"+object.getId()+"~~~" +((SingleClubMember)object).getBirthday() +"~~~" +((SingleClubMember) object).getClubName();}
 		else {
+			return object.getMemberType()+ "~~~" + object.getName()+
+					"~~~"+object.getId()+"~~~" +((MultiClubMember)object).getBirthday() + "~~~" +((MultiClubMember)object).getMembershipPoints();}
 		
 	} 
 		// return object attributes separated with a delimeter
-	}
+	
 
 	@Override
 	public Member fromLine(String line) {
@@ -29,18 +31,20 @@ public class SingleMemberLineConverter implements LineConverter<Member> {
 		if (parts[0].equalsIgnoreCase("single")) {
 			String name = parts[1];
 			int ID = Integer.parseInt(parts[2]);
-		    String clubName = parts[3];
+			String birthday = parts[3];
+		    String clubName = parts[4];
 		    for(Club c: clubList) {
 		    	if(c.getName().equalsIgnoreCase(clubName)) {
 		    		club = c;
 		    	}
 		    }
-			return new SingleClubMember("Single",name, ID, club);
+			return new SingleClubMember("Single",name, ID,birthday, club);
 		}else {
 			String name = parts[1];
 			int ID = Integer.parseInt(parts[2]);
-			int membershipPoints = Integer.parseInt(parts[3]);
-			return new MultiClubMember("Multi", name, ID, membershipPoints);
+			String birthday = parts[3];
+			int membershipPoints = Integer.parseInt(parts[4]);
+			return new MultiClubMember("Multi", name, ID,birthday,membershipPoints);
 		}
 	}
 

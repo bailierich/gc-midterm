@@ -4,6 +4,7 @@ public abstract class Member {
 	protected int id;
 	private String memberType;
 	public abstract void checkIn(Club club);
+	public abstract void printBill();
 	
 	public Member() {
 		
