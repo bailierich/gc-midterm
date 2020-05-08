@@ -3,9 +3,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-//import lab17.Country;
-//import lab17.CountryLineConverter;
-//import lab17.FileHelper;
+
 
 public class FitnessCenter {
 
@@ -15,23 +13,27 @@ public class FitnessCenter {
 	private static List<Club> clubList = new ArrayList<>();
 
 	private static int idNum = 100;
-	private static FileHelper<Member> helper = new FileHelper<>("members.txt", new SingleMemberLineConverter(clubList));
-//private static FileHelper<Club> helper = new FileHelper<>("club.txt", new CountryLineConverter());
+	private static FileHelper<Member> helper = new FileHelper<>("members.txt", new MemberLineConverter(clubList));
+	private static FileHelper<Club> clubHelper = new FileHelper<>("club.txt", new ClubLineConverter());
 	static {
 		initialMenu.add("New Member");
 		initialMenu.add("Check A Member In");
 		initialMenu.add("Generate Bill");
+		initialMenu.add("Remove member");
+		initialMenu.add("Get Member Information");
 		initialMenu.add("Quit");
 		
 		clubList.add(new Club("Detroit", "1570 Woodward Ave floor 3, Detroit, MI 48226"));
 		clubList.add(new Club("Grand Rapids", "40 Pearl St NW #200, Grand Rapids, MI 49503"));
 		clubList.add(new Club("Royal Oak", "1455 Main St., Royal Oak, MI"));
 		clubList.add(new Club("West Bloomfeild", "2324 Main St., West Bloomfield, MI"));
-
+		
 	}
 
 	public static void main(String[] args) {
+		clubHelper.rewrite(clubList); //this prints the current club list a file
 		printMenu();
+		
 
 	}
 
@@ -52,7 +54,7 @@ public class FitnessCenter {
 			System.out.println((i + 1) + " " + initialMenu.get(i));
 		}
 
-		int choice = ValidatorHelper.getInt(scnr, "What would you like to do?", 1, 4);
+		int choice = ValidatorHelper.getInt(scnr, "What would you like to do?", 1, 6);
 			if (choice == 1) {
 				whichMembership();
 				printMenu();
@@ -62,6 +64,12 @@ public class FitnessCenter {
 			}
 			else if (choice == 3){
 				printBill();
+				printMenu();
+			}else if (choice == 4) {
+				removeMember();
+				printMenu();
+			}else if (choice == 5) {
+				printMemberInfo();
 				printMenu();
 			}
 			else {
@@ -143,5 +151,27 @@ public class FitnessCenter {
 				m.printBill();
 			}
 		}	
+	}
+	private static void removeMember() {
+		System.out.println();
+		int input;
+		memberList = helper.readAll();
+		for(int index = 0; index < memberList.size(); index++) {
+			System.out.println((index + 1) + " - " + memberList.get(index));
+		}
+		System.out.println();
+		input = ValidatorHelper.getInt(scnr, "\nWhich Member would you like to remove?");
+		memberList.remove(input - 1);
+		helper.rewrite(memberList);
+		
+	}
+	private static void printMemberInfo() {
+	String input = Validator.getString(scnr, "Which member's information would you like to display?");
+	for (Member m: memberList) {
+		if (m.getName().equalsIgnoreCase(input)) {
+			System.out.println(m);
+		}
+			
+	}
 	}
 }

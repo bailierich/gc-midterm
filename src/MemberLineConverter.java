@@ -1,11 +1,11 @@
 import java.util.List;
 
-public class SingleMemberLineConverter implements LineConverter<Member> {
+public class MemberLineConverter implements LineConverter<Member> {
 	// TODO come back and make both single and multi member line converters 
 	private List<Club> clubList;
 	
 	
-	public SingleMemberLineConverter(List<Club> clubList) {
+	public MemberLineConverter(List<Club> clubList) {
 		super();
 		this.clubList = clubList;
 	}
