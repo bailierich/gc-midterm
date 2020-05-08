@@ -32,10 +32,7 @@ public class SingleClubMember extends Member{
 
 	@Override
 	public void checkIn(Club club) {
-		if (club.getName() != clubName.getName()) {
-			System.out.println(" Error. " + getName() + " can only check in at " + getClubName() + ". ");
-		}
-		
+		System.out.println("Member has been checked in.");
 	}
 
 
@@ -69,10 +66,10 @@ public class SingleClubMember extends Member{
 		Date endDate = new Date(2020, 2, 1);
 		if(todaysDate.after(startDate) && todaysDate.before(endDate)) {
 			price = price - (price * .20);
-			System.out.println(getName() + "'s current bill is: $" + (price));
+			System.out.printf("%s's current bill is: $%.2f\n", getName(), (price));
 		}
 		else {
-			System.out.println(getName() + "'s current bill is: $" + (price));	
+			System.out.printf("%s's current bill is: $%.2f\n", getName(), (price));	
 		}
 	}
 }

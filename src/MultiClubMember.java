@@ -16,7 +16,7 @@ public class MultiClubMember extends Member {
 
 	@Override
 	public void checkIn(Club club) {
-			
+		System.out.println("Member has been checked in.");	
 	}
 
 
@@ -43,7 +43,7 @@ public class MultiClubMember extends Member {
 	@Override
 	public void printBill() {
 		int points = getMembershipPoints();
-		double price = 75.00;
+		double price = 100.00;
 		Date todaysDate = new Date();
 		Date startDate = new Date(2020, 1, 1);
 		Date endDate = new Date(2020, 2, 1);
@@ -52,16 +52,16 @@ public class MultiClubMember extends Member {
 			if (points > 50) {
 				price -= 5;
 			}
-			System.out.println(getName() + "'s current bill is: $" + (price));
+			System.out.printf("%s's current bill is: $%.2f\n", getName(), (price));
 			System.out.println(getName() + " has " + points + " membership points.");
 		}
 		if (points > 50) {
 			price -= 5;
-			System.out.println(getName() + "'s current bill is: $" + (price));	
+			System.out.printf("%s's current bill is: $%.2f\n", getName(), (price));	
 			System.out.println(getName() + " has " + points + " membership points.");
 		}
 		else {
-			System.out.println(getName() + "'s current bill is: $" + (price));	
+			System.out.printf("%s's current bill is: $%.2f\n", getName(), (price));	
 			System.out.println(getName() + " has " + points + " membership points.");
 		}	
 	}

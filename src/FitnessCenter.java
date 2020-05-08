@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
-
-
 
 public class FitnessCenter {
 
@@ -22,19 +19,18 @@ public class FitnessCenter {
 		initialMenu.add("Remove member");
 		initialMenu.add("Get Member Information");
 		initialMenu.add("Quit");
-		
+
 		clubList.add(new Club("Detroit", "1570 Woodward Ave floor 3, Detroit, MI 48226"));
 		clubList.add(new Club("Grand Rapids", "40 Pearl St NW #200, Grand Rapids, MI 49503"));
 		clubList.add(new Club("Royal Oak", "1455 Main St., Royal Oak, MI"));
 		clubList.add(new Club("West Bloomfeild", "2324 Main St., West Bloomfield, MI"));
-		
+
 	}
 
 	public static void main(String[] args) {
 		memberList = helper.readAll();// Refills this list with current values from file
-		clubHelper.rewrite(clubList); //this prints the current club list to a file
+		clubHelper.rewrite(clubList); // this prints the current club list to a file
 		printMenu();
-		
 
 	}
 
@@ -56,28 +52,26 @@ public class FitnessCenter {
 		}
 
 		int choice = ValidatorHelper.getInt(scnr, "What would you like to do?", 1, 6);
-			if (choice == 1) {
-				whichMembership();
-				printMenu();
-			} else if (choice == 2) {
-				memberCheckIn();
-				printMenu();
-			}
-			else if (choice == 3){
-				printBill();
-				printMenu();
-			}else if (choice == 4) {
-				removeMember();
-				printMenu();
-			}else if (choice == 5) {
-				printMemberInfo();
-				printMenu();
-			}
-			else {
-				System.out.println("Goodbye!");
-			}
-			
+		if (choice == 1) {
+			whichMembership();
+			printMenu();
+		} else if (choice == 2) {
+			memberCheckIn();
+			printMenu();
+		} else if (choice == 3) {
+			printBill();
+			printMenu();
+		} else if (choice == 4) {
+			removeMember();
+			printMenu();
+		} else if (choice == 5) {
+			printMemberInfo();
+			printMenu();
+		} else {
+			System.out.println("Goodbye!");
 		}
+
+	}
 
 	private static Member makeNewSingleMember() {
 		String inputMemberName = Validator.getString(scnr, "What is the members name?");
@@ -89,6 +83,7 @@ public class FitnessCenter {
 				clubPick);
 		memberList.add(newClubMember);
 		helper.append(newClubMember);
+		System.out.println("New Member Created.");
 		return newClubMember;
 	}
 
@@ -116,6 +111,7 @@ public class FitnessCenter {
 				MembershipPoints);
 		memberList.add(newClubMember);
 		helper.append(newClubMember);
+		System.out.println("New Member Created.");
 		return newClubMember;
 
 	}
@@ -123,65 +119,82 @@ public class FitnessCenter {
 	private static void memberCheckIn() {
 		String input = Validator.getString(scnr, "Which member is checking in (name)?");
 		String currentClub = Validator.getString(scnr, "What club is the member checking into?");
-		 
+
 		for (int i = 0; i < memberList.size(); i++) {
 			if (input.equalsIgnoreCase(memberList.get(i).getName())) {
 				String memType = memberList.get(i).getMemberType();
 				if (memType.equalsIgnoreCase("single")) {
-                 SingleClubMember a = (SingleClubMember) memberList.get(i);
+					SingleClubMember a = (SingleClubMember) memberList.get(i);
 					for (Club c : clubList) {
 						if (a.getClubName().equalsIgnoreCase(currentClub)) {
 							a.checkIn(c);
 						} else {
-							System.out.println(" Error. " + a.getName() + " can only check in at "
-									+ (a.getClubName() + ". "));
+							System.out.println(
+									" Error. " + a.getName() + " can only check in at " + (a.getClubName() + ". "));
 							return;
 						}
 					}
-				} else { 
+				} else {
 					for (Club c : clubList) {
-						if (c.getName().equals(currentClub)) {
+						if (c.getName().equalsIgnoreCase(currentClub)) {
 							MultiClubMember b = (MultiClubMember) memberList.get(i);
 							int Points = b.getMembershipPoints() + 10;
 							b.setMembershipPoints(Points);
+							b.checkIn(c);
+							helper.rewrite(memberList);
 							return;
 						}
 					}
 				}
+			} else {
+					System.out.println("Member doesn't exist.");
+					memberCheckIn();
 			}
 		}
 	}
+
 	
+
 	private static void printBill() {
 		String memberName = Validator.getString(scnr, "Which member account would you like to print a bill for?");
-		 
+
 		for (Member m : memberList) {
 			if (memberName.equalsIgnoreCase(m.getName())) {
 				m.printBill();
+				return;
+			} else {
+				System.out.println("Member doesn't exist.");
+				printBill();
 			}
-		}	
+		}
 	}
+
 	private static void removeMember() {
 		System.out.println();
 		int input;
-		 
-		for(int index = 0; index < memberList.size(); index++) {
+
+		for (int index = 0; index < memberList.size(); index++) {
 			System.out.println((index + 1) + " - " + memberList.get(index));
 		}
 		System.out.println();
 		input = ValidatorHelper.getInt(scnr, "\nWhich Member would you like to remove?");
 		memberList.remove(input - 1);
 		helper.rewrite(memberList);
-		
+		System.out.println("Member has been removed.");
 	}
+
 	private static void printMemberInfo() {
-	String input = Validator.getString(scnr, "Which member's information would you like to display?");
-	 
-	for (Member m: memberList) {
-		if (m.getName().equalsIgnoreCase(input)) {
-			System.out.println(m);
+		String input = Validator.getString(scnr, "Which member's information would you like to display?");
+
+		for (Member m : memberList) {
+			if (m.getName().equalsIgnoreCase(input)) {
+				System.out.println(m);
+				return;
+			}else {
+				System.out.println("Member doesn't exist.");
+				printMemberInfo();
+			}
+
 		}
-			
-	}
 	}
 }
