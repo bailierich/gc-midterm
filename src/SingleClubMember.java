@@ -1,3 +1,4 @@
+import java.util.Date;
 
 public class SingleClubMember extends Member{
 	private Club clubName;
@@ -55,12 +56,16 @@ public class SingleClubMember extends Member{
 
 	@Override
 	public void printBill() {
-		// TODO Auto-generated method stub
-		
+		double price = 75.00;
+		Date todaysDate = new Date();
+		Date startDate = new Date(2020, 1, 1);
+		Date endDate = new Date(2020, 2, 1);
+		if(todaysDate.after(startDate) && todaysDate.before(endDate)) {
+			price = price - (price * .20);
+			System.out.println(getName() + "'s current bill is: $" + (price));
+		}
+		else {
+			System.out.println(getName() + "'s current bill is: $" + (price));	
+		}
 	}
-	
-	
-	
-	
-
 }

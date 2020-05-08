@@ -21,7 +21,8 @@ public class FitnessCenter {
 		initialMenu.add("New Member");
 		initialMenu.add("Check A Member In");
 		initialMenu.add("Generate Bill");
-
+		initialMenu.add("Quit");
+		
 		clubList.add(new Club("Detroit", "1570 Woodward Ave floor 3, Detroit, MI 48226"));
 		clubList.add(new Club("Grand Rapids", "40 Pearl St NW #200, Grand Rapids, MI 49503"));
 		clubList.add(new Club("Royal Oak", "1455 Main St., Royal Oak, MI"));
@@ -51,15 +52,23 @@ public class FitnessCenter {
 			System.out.println((i + 1) + " " + initialMenu.get(i));
 		}
 
-		int choice = ValidatorHelper.getInt(scnr, "What would you like to do?", 1, 3);
-		if (choice == 1) {
-			whichMembership();
-			printMenu();
-		} else if (choice == 2) {
-			memberCheckIn();
-			printMenu();
+		int choice = ValidatorHelper.getInt(scnr, "What would you like to do?", 1, 4);
+			if (choice == 1) {
+				whichMembership();
+				printMenu();
+			} else if (choice == 2) {
+				memberCheckIn();
+				printMenu();
+			}
+			else if (choice == 3){
+				printBill();
+				printMenu();
+			}
+			else {
+				System.out.println("Goodbye!");
+			}
+			
 		}
-	}
 
 	private static Member makeNewSingleMember() {
 		String inputMemberName = Validator.getString(scnr, "What is the members name?");
@@ -124,13 +133,15 @@ public class FitnessCenter {
 					}
 				}
 			}
-
 		}
-
 	}
 	
 	private static void printBill() {
 		String memberName = Validator.getString(scnr, "Which member account would you like to print a bill for?");
-		
+		for (Member m : memberList) {
+			if (memberName.equalsIgnoreCase(m.getName())) {
+				m.printBill();
+			}
+		}	
 	}
 }

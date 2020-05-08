@@ -1,3 +1,4 @@
+import java.util.Date;
 
 public class MultiClubMember extends Member {
 	
@@ -42,8 +43,28 @@ public class MultiClubMember extends Member {
 
 	@Override
 	public void printBill() {
-		// TODO Auto-generated method stub
-		
+		int points = getMembershipPoints();
+		double price = 75.00;
+		Date todaysDate = new Date();
+		Date startDate = new Date(2020, 1, 1);
+		Date endDate = new Date(2020, 2, 1);
+		if(todaysDate.after(startDate) && todaysDate.before(endDate)) {
+			price = price - (price * .20);
+			if (points > 50) {
+				price -= 5;
+			}
+			System.out.println(getName() + "'s current bill is: $" + (price));
+			System.out.println(getName() + " has " + points + " membership points.");
+		}
+		if (points > 50) {
+			price -= 5;
+			System.out.println(getName() + "'s current bill is: $" + (price));	
+			System.out.println(getName() + " has " + points + " membership points.");
+		}
+		else {
+			System.out.println(getName() + "'s current bill is: $" + (price));	
+			System.out.println(getName() + " has " + points + " membership points.");
+		}	
 	}
 }
 
