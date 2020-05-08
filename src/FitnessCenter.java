@@ -122,22 +122,24 @@ public class FitnessCenter {
 	private static void memberCheckIn() {
 		String input = Validator.getString(scnr, "Which member is checking in (name)?");
 		String currentClub = Validator.getString(scnr, "What club is the member checking into?");
-		for (Member m : memberList) {
-			String memType = m.getMemberType();
-			if (memType.equalsIgnoreCase("single")) {
-				for (Club c : clubList) {
-					if (c.getName().equals(currentClub)) {
-						m.checkIn(c);
-					} else {
-						System.out.println(" Error. " + m.getName() + " can only check in at "
-								+ ((SingleClubMember) m).getClubName() + ". ");
+		for (int i = 0; i < memberList.size(); i++) {
+			if (input.equalsIgnoreCase(memberList.get(i).getName())) {
+				String memType = memberList.get(i).getMemberType();
+				if (memType.equalsIgnoreCase("single")) {
+                 SingleClubMember a = (SingleClubMember) memberList.get(i);
+					for (Club c : clubList) {
+						if (a.getClubName().equalsIgnoreCase(currentClub)) {
+							a.checkIn(c);
+						} else {
+							System.out.println(" Error. " + a.getName() + " can only check in at "
+									+ (a.getClubName() + ". "));
+						}
 					}
-				}
-
-			} else {
-				for (Club c : clubList) {
-					if (c.getName().equals(currentClub)) {
-						m.checkIn(c);
+				} else {
+					for (Club c : clubList) {
+						if (c.getName().equals(currentClub)) {
+							memberList.get(i).checkIn(c);
+						}
 					}
 				}
 			}

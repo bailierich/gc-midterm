@@ -45,6 +45,7 @@ public abstract class Member {
 	public String toString() {
 		return "Members [name=" + name + ", id=" + id + "]";
 	}
+	protected abstract String getClubName();
 	
 	
 	

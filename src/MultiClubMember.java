@@ -66,6 +66,14 @@ public class MultiClubMember extends Member {
 			System.out.println(getName() + " has " + points + " membership points.");
 		}	
 	}
+
+
+	@Override
+	protected String getClubName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 
 
