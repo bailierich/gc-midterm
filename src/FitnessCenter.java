@@ -138,10 +138,13 @@ public class FitnessCenter {
 							return;
 						}
 					}
-				} else {
+				} else { 
 					for (Club c : clubList) {
 						if (c.getName().equals(currentClub)) {
-							memberList.get(i).checkIn(c);
+							MultiClubMember b = (MultiClubMember) memberList.get(i);
+							int Points = b.getMembershipPoints() + 10;
+							b.setMembershipPoints(Points);
+							return;
 						}
 					}
 				}

@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class MultiClubMember extends Member {
 	
-	private int membershipPoints = 0;
+	private int membershipPoints;;
 	private String birthday;
 	
 	
@@ -16,7 +16,7 @@ public class MultiClubMember extends Member {
 
 	@Override
 	public void checkIn(Club club) {
-		membershipPoints = membershipPoints + 10;	
+			
 	}
 
 
