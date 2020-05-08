@@ -12,11 +12,13 @@ public class SingleMemberLineConverter implements LineConverter<Member> {
 //TODO figure out how to change this to fit both types of members
 	@Override
 	public String toLine(Member object) {
-//		if (object.getMemberType().equalsIgnoreCase("single")) {
-//		object = new SingleClubMember()
-//		}
+		if (object.getMemberType().equalsIgnoreCase("single")) {
+		return	object.getMemberType()+ "~~~" + object.getName()+
+				"~~~"+object.getId()+"~~~" +((SingleClubMember) object).getClubName();}
+		else {
+		
+	} 
 		// return object attributes separated with a delimeter
-		return object.getName()+"~~~"+object.getId();
 	}
 
 	@Override
