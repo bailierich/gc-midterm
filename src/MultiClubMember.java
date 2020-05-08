@@ -3,7 +3,6 @@ import java.util.Date;
 public class MultiClubMember extends Member {
 	
 	private int membershipPoints = 0;
-	private String memberType;
 	private String birthday;
 	
 	
@@ -72,6 +71,12 @@ public class MultiClubMember extends Member {
 	protected String getClubName() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public String toString() {
+		return "Membership Type: " + memberType + "\nClub Member Name:" + name + "\nID: " + id + "\nBirthday: " + birthday 
+         + "\nMembership Points: " + membershipPoints;
 	}
 
 }

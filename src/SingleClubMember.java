@@ -24,6 +24,13 @@ public class SingleClubMember extends Member{
 
 
 	@Override
+	public String toString() {
+		return "Membership Type: " + memberType + "\nClub Member Name:" + name + "\nID: " + id + "\nBirthday: " + birthday 
+				+ "\nClub Name: " + clubName;
+	}
+
+
+	@Override
 	public void checkIn(Club club) {
 		if (club.getName() != clubName.getName()) {
 			System.out.println(" Error. " + getName() + " can only check in at " + getClubName() + ". ");

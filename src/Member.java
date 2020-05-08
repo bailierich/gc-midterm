@@ -2,7 +2,7 @@
 public abstract class Member {
 	protected String name;
 	protected int id;
-	private String memberType;
+	protected String memberType;
 	public abstract void checkIn(Club club);
 	public abstract void printBill();
 	
@@ -18,6 +18,9 @@ public abstract class Member {
 	}
 	
 	public String getName() {
+		
+		name = name.substring(0, 1).toUpperCase() + name.substring(1);
+		
 		return name;
 	}
 	

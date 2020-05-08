@@ -31,7 +31,8 @@ public class FitnessCenter {
 	}
 
 	public static void main(String[] args) {
-		clubHelper.rewrite(clubList); //this prints the current club list a file
+		memberList = helper.readAll();// Refills this list with current values from file
+		clubHelper.rewrite(clubList); //this prints the current club list to a file
 		printMenu();
 		
 
@@ -122,6 +123,7 @@ public class FitnessCenter {
 	private static void memberCheckIn() {
 		String input = Validator.getString(scnr, "Which member is checking in (name)?");
 		String currentClub = Validator.getString(scnr, "What club is the member checking into?");
+		 
 		for (int i = 0; i < memberList.size(); i++) {
 			if (input.equalsIgnoreCase(memberList.get(i).getName())) {
 				String memType = memberList.get(i).getMemberType();
@@ -133,6 +135,7 @@ public class FitnessCenter {
 						} else {
 							System.out.println(" Error. " + a.getName() + " can only check in at "
 									+ (a.getClubName() + ". "));
+							return;
 						}
 					}
 				} else {
@@ -148,6 +151,7 @@ public class FitnessCenter {
 	
 	private static void printBill() {
 		String memberName = Validator.getString(scnr, "Which member account would you like to print a bill for?");
+		 
 		for (Member m : memberList) {
 			if (memberName.equalsIgnoreCase(m.getName())) {
 				m.printBill();
@@ -157,7 +161,7 @@ public class FitnessCenter {
 	private static void removeMember() {
 		System.out.println();
 		int input;
-		memberList = helper.readAll();
+		 
 		for(int index = 0; index < memberList.size(); index++) {
 			System.out.println((index + 1) + " - " + memberList.get(index));
 		}
@@ -169,6 +173,7 @@ public class FitnessCenter {
 	}
 	private static void printMemberInfo() {
 	String input = Validator.getString(scnr, "Which member's information would you like to display?");
+	 
 	for (Member m: memberList) {
 		if (m.getName().equalsIgnoreCase(input)) {
 			System.out.println(m);
