@@ -189,12 +189,12 @@ public class FitnessCenter {
 		for (Member m : memberList) {
 			if (m.getName().equalsIgnoreCase(input)) {
 				System.out.println(m);
-				return;
+				
 			}else {
 				System.out.println("Member doesn't exist.");
 				printMemberInfo();
 			}
-
+			return;
 		}
 	}
 }
