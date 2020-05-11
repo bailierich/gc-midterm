@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class FitnessCenter {
 
 	private static Scanner scnr = new Scanner(System.in);
@@ -147,7 +149,7 @@ public class FitnessCenter {
 					}
 				}
 			} else {
-					System.out.println("Member doesn't exist.");
+				JOptionPane.showMessageDialog(null,"Member doesn't exist.");
 					memberCheckIn();
 			}
 		}
